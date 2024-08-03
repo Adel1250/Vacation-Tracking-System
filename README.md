@@ -42,6 +42,13 @@ uses the **portal’s single-sign-on mechanisms** for all authentication.
 
 + The system should comply with **organizational policies** and possibly legal regulations concerning employee data management.
 
+### 1.4. Constraints
+
++ Use of Existing Hardware and Middleware.
++ Integration with Existing Intranet Portal System.
++ Compliance with Organizational Policies.
++ Interface with HR department legacy systems to retrieve required employee information and changes.
+
 ## 2. Domain
 
 In the past, all vacation time had to be approved by an immediate manager and then checked by a clerk in the HR department before it was authorized. Sometimes this manual process could **take days**.

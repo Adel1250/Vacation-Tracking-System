@@ -2,14 +2,14 @@
 
 ## 1. Requirements
 
-### 1.1 Vision
+### 1.1. Vision
 
 A **Vacation Tracking System** (VTS) will provide individual employees with the
 capability to manage their own **vacation time**, **sick leave**, and **personal time off**, without having to be an expert in company policy or the local facility’s leave policies.
 
 The main goal of this application is to **improve the internal business processes** of this organization, at least with respect to the time it takes to **manage vacation time requests**.
 
-### 1.2 Functional Requirements
+### 1.2. Functional Requirements
 
 + Implements a flexible **rules-based system** for validating and verifying leave time requests.
 
@@ -33,6 +33,14 @@ uses the **portal’s single-sign-on mechanisms** for all authentication.
 + Provides a **Web service interface** for other internal systems to query any given employee’s vacation request summary.
 
 + Interfaces with the **HR department legacy systems** to retrieve required employee information and changes.
+
+### 1.3. Non-Functional Requirements
+
++ The system should be **user-friendly** to ensure that employees and managers can use it without extensive training.
+
++ The system must ensure **secure handling** of employee data, especially given its integration with HR systems.
+
++ The system should comply with **organizational policies** and possibly legal regulations concerning employee data management.
 
 ## 2. Domain
 

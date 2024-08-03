@@ -41,3 +41,10 @@ In the past, all vacation time had to be approved by an immediate manager and th
 An **automated system** will speed up this process and will require at most **one manual approval** by the immediate manager (some high-level employees may not require manager approval).
 
 This system has the potential to **save time and money** mostly in the HR department, which is essentially taken out of the individual time request process and replaced by a **rules-based validation system**. HR personnel are still responsible for entering and updating employee vacation data in the system; however, they will no longer be a link in the chain for requesting and validating each time request.
+
+## 3. Actors
+
++ Manager
++ Clerk
++ Employee
++ System Admin

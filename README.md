@@ -74,3 +74,40 @@ This system has the potential to **save time and money** mostly in the HR depart
 + **System Admin**
 
 > A role responsible for the smooth running of the system’s technical resources (e.g., Web server, database) and for collecting and archiving all log files.
+
+## 4. Use Cases
+
++ **Manage Time**
+
+> Describes how employees request and view vacation time
+requests.
+
++ **Approve Request**
+
+> Describes how a manager responds to a subordinate’s
+request for vacation time.
+
++ **Award Time**
+
+> Describes how a manager can award a subordinate extra
+leave time (comp time).
+
++ **Edit Employee Record**
+
+> Describes how an HR clerk edits an employee’s information in the system. This includes setting all the leave time allowances and the maximum time that can be awarded by the manager.
+
++ **Manage Locations**
+
+> Describes how an HR clerk manages location records and their rules.
+
++ **Manage Leave Categories**
+
+> Describes how an HR clerk manages leave categories and their rules.
+
++ **Override Leave Records**
+
+> Describes how an HR clerk may override any rejection of leave time requests made by the rules in the system.
+
++ **Back Up System Logs**
+
+> Describes how the system administrator backs up the system’s logs.

@@ -111,3 +111,9 @@ leave time (comp time).
 + **Back Up System Logs**
 
 > Describes how the system administrator backs up the system’s logs.
+
+### 4.1. Manage Time Use Case
+
+#### 4.1.1. Sequence Diagram
+
+![High level Manage time Flow](./diagrams/sequence-diagrams/High%20level%20Manage%20Time%20Flow.png)

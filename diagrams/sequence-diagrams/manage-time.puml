@@ -1,0 +1,61 @@
+@startuml High level Manage Time Flow
+
+actor "Employee" as EMP #GreenYellow
+participant "Intranet Portal" as IP #Gainsboro
+participant VTS #Gold
+
+database "Database" as DB #LightSkyBlue
+
+autonumber
+
+EMP -> IP: Click on Manage time tab
+activate IP
+IP -> VTS: [GET] vacation time requests and outstanding balances
+activate VTS
+VTS -> DB: [SELECT] vacation time requests and outstanding balances
+activate DB
+DB --> VTS: Return vacation time requests and outstanding balances
+deactivate DB
+VTS --> IP: Return vacation time requests and outstanding balances
+deactivate VTS
+EMP -> IP: Choose the date and time of the vacation request from a specific category and other relevant data
+IP -> VTS: [POST] employee's vacation request
+activate VTS
+VTS -> VTS: Validate vacation request's information
+alt Invalid request information
+    VTS --> IP: Return validation error
+else
+    VTS -> DB: [INSERT] employee's vacation request
+    activate DB
+    DB --> VTS: Inserted empoyee's vacation request
+    deactivate DB
+    VTS --> IP: Created vacation request
+end
+deactivate VTS
+alt Employee needs to change the request
+    EMP -> IP: Update vacation request information
+    IP -> VTS: [PUT] employee's vacation request
+    activate VTS
+    VTS -> VTS: Validate vacation request's information
+    alt Invalid request information
+        VTS --> IP: Return validation error
+    else
+        VTS -> DB: [UPDATE] employee's vacation request
+        activate DB
+        DB --> VTS: Updated empoyee's vacation request
+        deactivate DB
+        VTS --> IP: Updated vacation request
+    end
+    deactivate VTS
+else Emoloyee needs to cancel the request
+    EMP -> IP: Cancel vacation request information
+    IP -> VTS: [DELETE] employee's vacation request
+    activate VTS
+    VTS -> DB: [DELETE] employee's vacation request
+    activate DB
+    DB --> VTS: Deleted empoyee's vacation request
+    deactivate DB
+    VTS --> IP: Deleted vacation request
+end
+
+@enduml

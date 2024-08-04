@@ -6,6 +6,8 @@ participant VTS #Gold
 
 database "Database" as DB #LightSkyBlue
 
+actor "Manager" as MNG #RED
+
 autonumber
 
 EMP -> IP: Click on Manage time tab
@@ -18,44 +20,60 @@ DB --> VTS: Return vacation time requests and outstanding balances
 deactivate DB
 VTS --> IP: Return vacation time requests and outstanding balances
 deactivate VTS
-EMP -> IP: Choose the date and time of the vacation request from a specific category and other relevant data
+loop While the employee makes changes in the vacation request
+    EMP -> IP: Choose the date and time of the vacation request from a specific category and other relevant data
+    IP -> VTS: Validate vacation request
+    activate VTS
+    alt Invalid request information
+        VTS --> IP: Return validation error
+    else 
+        VTS --> IP: Return validation accepted
+    end
+    deactivate VTS
+end
+EMP -> IP: Confirm vacation request
 IP -> VTS: [POST] employee's vacation request
 activate VTS
 VTS -> VTS: Validate vacation request's information
 alt Invalid request information
     VTS --> IP: Return validation error
 else
-    VTS -> DB: [INSERT] employee's vacation request
-    activate DB
-    DB --> VTS: Inserted empoyee's vacation request
-    deactivate DB
-    VTS --> IP: Created vacation request
-end
-deactivate VTS
-alt Employee needs to change the request
-    EMP -> IP: Update vacation request information
-    IP -> VTS: [PUT] employee's vacation request
-    activate VTS
-    VTS -> VTS: Validate vacation request's information
-    alt Invalid request information
-        VTS --> IP: Return validation error
-    else
-        VTS -> DB: [UPDATE] employee's vacation request
+    alt The vacation request needs manager's approval
+        VTS -> DB: [INSERT] employee's vacation request with pending approval status
         activate DB
-        DB --> VTS: Updated empoyee's vacation request
+        DB --> VTS: Inserted empoyee's vacation request with pending approval status
         deactivate DB
-        VTS --> IP: Updated vacation request
+        VTS --> IP: Created vacation request with pending approval status
+        deactivate VTS
+        VTS -> MNG: Send an e-mail to the authorized manager
+        MNG -> IP: Log in
+        MNG-> IP: View pending approvals
+        IP -> VTS: [GET] detailed pending approvals
+        activate VTS
+        VTS -> DB: [SELECT] detailed pending approvals
+        activate DB
+        DB --> VTS: Return detailed pending approvals
+        deactivate DB
+        VTS --> IP: Return detailed pending approvals
+        deactivate VTS
+        MNG -> IP: Approve or Disapprove the vacation request
+        IP -> VTS: [PUT] vacation request with the manager's approval status
+        activate VTS
+        VTS -> DB: [UPDATE] employee's vacation request with manager's approval status
+        activate DB
+        DB --> VTS: Updated empoyee's vacation request with manager's approval status
+        deactivate DB
+        VTS -> EMP: Send an e-mail with manager's approval status
+        VTS --> IP: Updated vacation request with manager's approval status
+        deactivate VTS
+    else
+        VTS -> DB: [INSERT] employee's vacation request with accepted status
+        activate DB
+        DB --> VTS: Inserted empoyee's vacation request with accepted status
+        deactivate DB
+        VTS --> IP: Created vacation request with accepted status
+        deactivate VTS
     end
-    deactivate VTS
-else Emoloyee needs to cancel the request
-    EMP -> IP: Cancel vacation request information
-    IP -> VTS: [DELETE] employee's vacation request
-    activate VTS
-    VTS -> DB: [DELETE] employee's vacation request
-    activate DB
-    DB --> VTS: Deleted empoyee's vacation request
-    deactivate DB
-    VTS --> IP: Deleted vacation request
 end
 
 @enduml

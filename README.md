@@ -117,3 +117,7 @@ leave time (comp time).
 #### 4.1.1. Sequence Diagram
 
 ![High level Manage time Flow](./diagrams/sequence-diagrams/High%20level%20Manage%20Time%20Flow.png)
+
+#### 4.1.2. Flow Chart
+
+![High level manage time Flow](./diagrams/flow-charts/manage-time.png)

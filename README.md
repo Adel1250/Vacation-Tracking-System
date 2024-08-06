@@ -122,6 +122,6 @@ leave time (comp time).
 
 ![High level manage time Flow](./diagrams/flow-charts/manage-time.png)
 
-### 4.1.3 ERD
+#### 4.1.3. ERD
 
 ![High level manage time Flow](./diagrams/erd/erd.png)

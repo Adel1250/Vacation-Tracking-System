@@ -16,7 +16,7 @@ EMP -> IP: Authenticate
 EMP -> IP: Click on Manage time tab
 IP -> VTS: [GET] vacation time requests and outstanding balances
 activate VTS
-VTS -> API: [GAT] vacation time requests and outstanding balances
+VTS -> API: [GET] vacation time requests and outstanding balances
 activate API
 API --> VTS: Return vacation time requests and outstanding balances
 deactivate API

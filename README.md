@@ -122,6 +122,18 @@ leave time (comp time).
 
 ![High level manage time Flow](./diagrams/flow-charts/manage-time.png)
 
-#### 4.1.3. ERD
+### 4.2. Withdraw Request Use Case
+
+#### 4.2.1. Sequence Diagram
+
+![High level Withdraw Request Flow](./diagrams/sequence-diagrams/High%20level%20Withdraw%20Request%20Flow.png)
+
+### 4.3. Cancel Request Use Case
+
+#### 4.3.1. Sequence Diagram
+
+![High level Cancel Request Flow](./diagrams/sequence-diagrams/High%20level%20Cancel%20Request%20Flow.png)
+
+## 5. ERD
 
 ![High level manage time Flow](./diagrams/erd/erd.png)

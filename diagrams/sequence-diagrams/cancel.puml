@@ -1,0 +1,46 @@
+@startuml High level Cancel Request Flow
+
+actor "Employee" as EMP #GreenYellow
+participant "Intranet Portal" as IP #Gainsboro
+participant VTS #Gold
+participant "HR API" as API #Blue
+
+database "Database" as DB #LightSkyBlue
+
+actor "Manager" as MNG #RED
+
+autonumber
+
+activate IP
+EMP -> IP: Authenticate
+IP -> VTS: [GET] vacation time requests and outstanding balances
+activate VTS
+VTS -> API: [GET] vacation time requests and outstanding balances
+activate API
+API --> VTS: Return vacation time requests and outstanding balances
+deactivate API
+VTS --> IP: Return vacation time requests and outstanding balances
+deactivate VTS
+EMP -> IP: Select vacation request to cancel
+alt Vacation request is approved
+    alt Request is in the future
+        EMP -> IP: Confirm cancelation
+    else Request is in the recent past
+        EMP -> IP: Enter cancellation explanation
+        EMP -> IP: Confirm cancellation
+    end
+    IP -> VTS: [PUT] vacation request status to CANCELLED
+    activate VTS
+    VTS -> DB: [UPDATE] vacation request status to CANCELLED
+    activate DB
+    DB --> VTS: Updated vacation request status
+    deactivate DB
+    VTS -> EMP: Notify using email
+    VTS -> API: [PUT] employee's vacation balance
+    activate API
+    API --> VTS: Updated employee's vacation request
+    deactivate API
+    deactivate VTS
+end
+deactivate IP
+@enduml

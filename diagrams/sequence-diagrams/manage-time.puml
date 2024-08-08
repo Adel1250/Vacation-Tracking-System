@@ -3,6 +3,7 @@
 actor "Employee" as EMP #GreenYellow
 participant "Intranet Portal" as IP #Gainsboro
 participant VTS #Gold
+participant "HR API" as API #Blue
 
 database "Database" as DB #LightSkyBlue
 
@@ -10,14 +11,15 @@ actor "Manager" as MNG #RED
 
 autonumber
 
-EMP -> IP: Click on Manage time tab
 activate IP
+EMP -> IP: Authenticate
+EMP -> IP: Click on Manage time tab
 IP -> VTS: [GET] vacation time requests and outstanding balances
 activate VTS
-VTS -> DB: [SELECT] vacation time requests and outstanding balances
-activate DB
-DB --> VTS: Return vacation time requests and outstanding balances
-deactivate DB
+VTS -> API: [GAT] vacation time requests and outstanding balances
+activate API
+API --> VTS: Return vacation time requests and outstanding balances
+deactivate API
 VTS --> IP: Return vacation time requests and outstanding balances
 deactivate VTS
 loop While the employee makes changes in the vacation request

@@ -1,0 +1,20 @@
+@startuml Vacation Request Statuses
+[*] --> Pending : Employee submits request
+
+Pending: edit() or withdraw()
+
+Pending --> Withdrawn : Employee withdraws request
+Pending --> Approved : Manager approves request
+Pending --> Canceled : Employee cancels approved request
+
+Withdrawn:
+Withdrawn --> [*]
+
+Approved: 
+Approved --> Canceled : Employee cancels approved request
+Approved --> [*]
+
+Canceled: 
+Canceled --> [*]
+
+@enduml

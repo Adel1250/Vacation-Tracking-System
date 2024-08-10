@@ -19,8 +19,6 @@ The main goal of this application is to **improve the internal business processe
 
 + Uses **e-mail notification** to request manager approval and notify employees of request status changes.
 
-+ Uses existing hardware and middleware.
-
 + Is implemented as an extension to the **existing intranet portal system**, and
 uses the **portal’s single-sign-on mechanisms** for all authentication.
 
@@ -155,3 +153,7 @@ leave time (comp time).
 ## 5. ERD
 
 ![High level manage time Flow](./diagrams/erd/erd.png)
+
+## 6. Vacation Request State Machine Diagram
+
+![States](./diagrams/state-machine/Vacation%20Request%20Statuses.png)

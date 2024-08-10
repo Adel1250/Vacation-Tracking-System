@@ -144,9 +144,13 @@ leave time (comp time).
 
 ### 4.4. Edit Pending Request
 
-#### 4.4.1 Sequence Diagram
+#### 4.4.1. Sequence Diagram
 
 ![High level Cancel Request Flow](./diagrams/sequence-diagrams/High%20level%20Edit%20Request%20Flow.png)
+
+#### 4.4.2. Flow Chart
+
+![High level withdraw request Flow](./diagrams/flow-charts/edit.png)
 
 ## 5. ERD
 

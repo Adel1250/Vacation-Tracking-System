@@ -138,6 +138,10 @@ leave time (comp time).
 
 ![High level Cancel Request Flow](./diagrams/sequence-diagrams/High%20level%20Cancel%20Request%20Flow.png)
 
+#### 4.3.2. Flow Chart
+
+![High level withdraw request Flow](./diagrams/flow-charts/cancel.png)
+
 ### 4.4. Edit Pending Request
 
 #### 4.4.1 Sequence Diagram

@@ -1,0 +1,38 @@
+@startuml High level Edit Request Flow
+actor "Employee" as EMP #GreenYellow
+participant "Intranet Portal" as IP #Gainsboro
+participant VTS #Gold
+participant "HR API" as API #Blue
+
+database "Database" as DB #LightSkyBlue
+
+autonumber
+
+activate IP
+EMP -> IP: Authenticate
+IP -> VTS: [GET] vacation time requests and outstanding balances
+activate VTS
+VTS -> API: [GET] vacation time requests and outstanding balances
+activate API
+API --> VTS: Return vacation time requests and outstanding balances
+deactivate API
+VTS --> IP: Return vacation time requests and outstanding balances
+deactivate VTS
+EMP -> IP: Select vacation request to edit, make the allowed changes and confirm
+alt Vacation request status is PENDING
+    IP -> VTS: Validate edited vacation request
+    activate VTS
+    alt Invalid request information
+        VTS --> IP: Return validation error
+        IP --> EMP: Display Error message
+    else
+        VTS -> DB: [UPDATE] vacation request
+        activate DB
+        DB --> VTS: Updated vacation request
+        deactivate DB
+        VTS --> IP: Edited vacation request
+    end
+    deactivate VTS
+end
+deactivate IP
+@enduml

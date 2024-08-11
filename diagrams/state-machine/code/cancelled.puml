@@ -6,9 +6,9 @@ state Authentication {
     Auth_In_Progress --> Authenticated : Authentication successful
 }
 
-Authenticated --> Cancelation
+Authenticated --> Cancellation
 
-state Cancelation {
+state Cancellation {
     [*] --> Viewing_Requests : Employee views vacation time requests and balances
 
     Viewing_Requests --> Selecting_Request : Employee selects vacation request to cancel

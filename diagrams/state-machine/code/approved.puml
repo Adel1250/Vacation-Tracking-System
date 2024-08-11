@@ -1,0 +1,31 @@
+@startuml Approved
+
+state Authentication {
+    [*] --> Auth_In_Progress : Employee is authenticating
+
+    Auth_In_Progress --> Authenticated : Authentication successful
+}
+
+Authenticated --> Managing_Time : Employee clicks on the Manage Time tab
+
+state Managing_Time {
+    [*] --> Requesting_Information : Employee requests vacation time information
+
+    Requesting_Information --> Validating_Request : Employee submits vacation request
+    Validating_Request : System validates the vacation request
+    Validating_Request --> Validation_Accepted : Request is valid
+
+    Validation_Accepted --> Submitting_Request : Employee confirms the vacation request
+
+    Submitting_Request --> Pending_Approval : Request needs manager's approval
+
+    state Pending_Approval {
+        [*] --> Waiting_For_Approval : Manager's approval is awaited
+
+        Waiting_For_Approval --> Approved : Manager approves the request
+    }
+}
+
+Approved --> [*] : Request is approved by the manager
+
+@enduml

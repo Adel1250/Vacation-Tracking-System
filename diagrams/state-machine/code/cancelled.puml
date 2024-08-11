@@ -1,0 +1,36 @@
+@startuml Cancelled
+
+state Authentication {
+    [*] --> Auth_In_Progress : Employee is authenticating
+
+    Auth_In_Progress --> Authenticated : Authentication successful
+}
+
+Authenticated --> Cancelation
+
+state Cancelation {
+    [*] --> Viewing_Requests : Employee views vacation time requests and balances
+
+    Viewing_Requests --> Selecting_Request : Employee selects vacation request to cancel
+
+    Selecting_Request --> Approved_Request
+
+    Approved_Request : The selected vacation request is approved
+
+    Approved_Request --> Future_Request : The request is in the future
+    Approved_Request --> Past_Request : The request is in the recent past
+
+    Future_Request --> Confirm_Cancellation : Employee confirms cancellation
+
+    Past_Request --> Enter_Explanation : Employee enters cancellation explanation
+    Enter_Explanation --> Confirm_Cancellation : Employee confirms cancellation
+
+    Confirm_Cancellation --> Updating_Status : System updates the vacation request status to CANCELLED
+
+    Updating_Status --> Notification : System notifies employee via email
+    Notification --> Updating_Balance : System updates employee's vacation balance
+
+}
+Updating_Balance --> [*] : Process ends after updating balance
+
+@enduml

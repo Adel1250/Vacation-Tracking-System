@@ -1,0 +1,27 @@
+@startuml Withdrawn
+
+state Authentication {
+    [*] --> Auth_In_Progress : Employee is authenticating
+
+    Auth_In_Progress --> Authenticated : Authentication successful
+}
+state Withdrawal {
+    Authenticated --> Withdrawal : Employee requests vacation time information
+
+    [*] --> Viewing_Requests : Employee views vacation time requests and balances
+
+    Viewing_Requests : Employee views vacation time requests and balances
+
+    Viewing_Requests --> Selecting_Request : Employee selects vacation request to withdraw
+    Selecting_Request --> Pending_Request
+    Pending_Request : The selected vacation request is in PENDING status
+
+    Pending_Request --> Confirm_Withdrawal : Employee confirms withdrawal
+    Confirm_Withdrawal --> Updating_Status : System updates the vacation request status to WITHDRAWN
+
+    Updating_Status --> Notification : System sends an email notification to the manager
+}
+
+Notification --> [*]
+
+@enduml

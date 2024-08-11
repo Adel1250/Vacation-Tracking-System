@@ -154,6 +154,30 @@ leave time (comp time).
 
 ![High level manage time Flow](./diagrams/erd/erd.png)
 
-## 6. Vacation Request State Machine Diagram
+## 6. State Machine Diagrams
+
+### 6.1. Main States Map
 
 ![States](./diagrams/state-machine/Vacation%20Request%20Statuses.png)
+
+### 6.2. Detailed State Machine Diagrams
+
+#### 6.2.1. Accepted Status
+
+![States](./diagrams/state-machine/Accepted.png)
+
+#### 6.2.2. Approved Status
+
+![States](./diagrams/state-machine/Approved.png)
+
+#### 6.2.3. Disapproved
+
+![States](./diagrams/state-machine/Disapproved.png)
+
+#### 6.2.4. Cancelled
+
+![States](./diagrams/state-machine/Cancelled.png)
+
+#### 6.2.5. Wiithdrawn
+
+![States](./diagrams/state-machine/Withdrawn.png)
